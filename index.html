@@ -17,6 +17,7 @@ body{font-family:'Poppins',system-ui,sans-serif;background:#fff;color:#1a1a2e;-w
   --blue:#4d82bc;
   --blue-light:#84b6f4;
   --blue-pale:#c4dafa;
+  --white-off:#fcffff;
   --cta:#005187;
   --cta-hover:#003d6b;
   --text-dark:#0d1f3c;
@@ -26,82 +27,73 @@ body{font-family:'Poppins',system-ui,sans-serif;background:#fff;color:#1a1a2e;-w
   --border:#e0ecff;
 }
 
-/* ══════════════ HERO ══════════════ */
-.hero{
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  overflow:hidden;
-  background:#000;
-  display:flex;
-  flex-direction:column;
-}
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:640px;width:100%;overflow:hidden;background:#000}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,10,30,0.82) 0%,rgba(0,15,40,0.78) 50%,rgba(0,10,30,0.95) 100%);
-}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,10,30,0.78) 0%,rgba(0,20,50,0.85) 60%,rgba(0,10,30,0.92) 100%)}
 
-/* NAV — full width bar, parte integral del hero */
-nav{
-  position:relative;z-index:30;
-  width:100%;
-  padding:0 2.5rem;
-  height:70px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,0.07);
-  background:rgba(0,10,30,0.3);
-  backdrop-filter:blur(16px);
-  flex-shrink:0;
-}
-.nav-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+/* NAV — fixed always on top */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background .3s,box-shadow .3s,padding .3s}
+nav.transparent{background:transparent;box-shadow:none}
+nav.scrolled{background:rgba(5,15,35,0.97);backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,0.3);padding:0.7rem 2rem}
+.nav-logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none}
 .nav-logo-mark{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--navy);border-radius:8px}
 .nav-logo-text{font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-0.02em}
 .nav-logo-text span{color:var(--blue-light)}
-.nav-links{display:none;align-items:center;gap:0.2rem}
+/* Mobile hamburger */
+.nav-hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:100}
+.nav-hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+@media(min-width:768px){.nav-hamburger{display:none}}
+/* Mobile menu */
+.nav-mobile-menu{display:none;position:fixed;inset:0;background:rgba(0,12,30,0.98);backdrop-filter:blur(16px);z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{color:#fff;text-decoration:none;font-size:1.5rem;font-weight:600;transition:color .2s}
+.nav-mobile-menu a:hover{color:var(--blue-light)}
+.nav-mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.75rem;cursor:pointer;line-height:1}
+.nav-links{display:none;align-items:center;gap:0.25rem;background:rgba(0,0,0,0.35);backdrop-filter:blur(12px);border-radius:999px;padding:0.45rem 0.75rem;border:1px solid rgba(255,255,255,0.1)}
 @media(min-width:768px){.nav-links{display:flex}}
-.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:0.84rem;padding:0.45rem 1rem;border-radius:999px;transition:color .2s,background .2s;font-weight:400}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.82rem;padding:0.4rem 1rem;border-radius:999px;transition:color .2s,background .2s;font-weight:400}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,0.1)}
-.nav-cta{background:var(--navy);color:#fff;font-size:0.84rem;font-weight:600;border:none;border-radius:999px;padding:0.65rem 1.4rem;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap;font-family:'Poppins',sans-serif}
+.nav-cta{background:var(--navy);color:#fff;font-size:0.85rem;font-weight:600;border:none;border-radius:999px;padding:0.7rem 1.5rem;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap;font-family:'Poppins',sans-serif}
 .nav-cta:hover{background:var(--cta-hover)}
 
-/* HERO BODY — centrado con flex */
-.hero-body{
-  position:relative;z-index:10;
-  flex:1;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  padding:2rem 2rem 1.5rem;
-  text-align:center;
-}
-
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:0.38rem 1rem;font-size:0.75rem;color:rgba(255,255,255,0.85);margin-bottom:1rem;letter-spacing:0.05em}
+/* HERO CONTENT */
+.hero-inner{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:5.5rem 2rem 7rem;text-align:center;gap:0}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:0.35rem 1rem;font-size:0.75rem;color:rgba(255,255,255,0.85);margin-bottom:0.9rem;letter-spacing:0.05em}
 .hero-badge-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
-.hero-brand{font-size:clamp(0.8rem,1.8vw,1rem);font-weight:600;color:var(--blue-pale);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem}
+.hero-brand{font-size:clamp(0.75rem,1.8vw,1rem);font-weight:600;color:var(--blue-pale);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem}
 
-.hero-headline{display:flex;flex-direction:column;align-items:center;margin-bottom:1rem;line-height:0.88}
-.hero-word{font-size:clamp(3.6rem,10.5vw,9rem);font-weight:900;letter-spacing:-0.04em;line-height:0.88;background:linear-gradient(180deg,#ffffff 30%,rgba(255,255,255,0.45) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+/* Giant words with gradient */
+.hero-headline{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:1.1rem;line-height:0.9}
+.hero-word{font-size:clamp(3.8rem,11vw,9.5rem);font-weight:900;letter-spacing:-0.04em;line-height:0.92;
+  background:linear-gradient(180deg,#ffffff 30%,rgba(255,255,255,0.45) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block}
 .hero-word.accent{background:linear-gradient(180deg,#84b6f4 0%,#4d82bc 60%,#005187 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-.hero-sub{font-size:clamp(0.86rem,1.7vw,1rem);color:rgba(255,255,255,0.68);max-width:500px;line-height:1.65;margin-bottom:1.1rem;font-weight:400}
+.hero-sub{font-size:clamp(0.85rem,1.6vw,1rem);color:rgba(255,255,255,0.7);max-width:500px;line-height:1.6;margin-bottom:1rem;font-weight:400}
 
-.hero-bullets{display:flex;flex-wrap:wrap;gap:0.45rem;justify-content:center;margin-bottom:1.4rem}
-.hero-bullet{display:flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:999px;padding:0.28rem 0.8rem;font-size:0.74rem;color:rgba(255,255,255,0.82)}
+/* Bullets hero */
+.hero-bullets{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:1.25rem}
+.hero-bullet{display:flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:999px;padding:0.28rem 0.85rem;font-size:0.74rem;color:rgba(255,255,255,0.82)}
+.hero-bullet svg{flex-shrink:0}
 
-.hero-cta-row{display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;margin-bottom:0.7rem}
-.btn-primary{display:inline-flex;align-items:center;gap:0.6rem;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:0.82rem 1.8rem;font-size:0.9rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif;box-shadow:0 8px 30px rgba(0,81,135,0.5)}
+.hero-cta-row{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.75rem;width:100%;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:0.55rem;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:0.8rem 1.75rem;font-size:0.9rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif;box-shadow:0 8px 30px rgba(0,81,135,0.5);white-space:nowrap}
 .btn-primary:hover{background:var(--cta-hover);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,81,135,0.65)}
-.btn-secondary{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:0.82rem 1.8rem;font-size:0.9rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:0.8rem 1.75rem;font-size:0.9rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif;white-space:nowrap}
 .btn-secondary:hover{background:rgba(255,255,255,0.18)}
-.hero-note{font-size:0.7rem;color:rgba(255,255,255,0.36)}
 
-/* STATS BAR */
-.hero-stats{position:relative;z-index:10;display:flex;justify-content:center;background:rgba(0,15,40,0.75);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,0.09);flex-shrink:0}
-.h-stat{flex:1;max-width:220px;padding:1.1rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
+.hero-note{font-size:0.7rem;color:rgba(255,255,255,0.38);text-align:center;letter-spacing:0.02em}
+
+/* Hero stats bar */
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;justify-content:center;gap:0;background:rgba(0,15,40,0.7);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,0.08)}
+.h-stat{flex:1;max-width:200px;padding:1.1rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
 .h-stat:last-child{border-right:none}
-.h-stat-num{font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-0.03em}
-.h-stat-label{font-size:0.67rem;color:rgba(255,255,255,0.48);margin-top:0.1rem}
+.h-stat-num{font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-0.03em}
+.h-stat-label{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.1rem}
 
-/* ══════════════ SECTIONS BASE ══════════════ */
+/* ── SECTIONS BASE ── */
 section{padding:5rem 2rem}
 .container{max-width:1080px;margin:0 auto}
 .section-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(0,81,135,0.08);border:1px solid rgba(0,81,135,0.15);border-radius:999px;padding:0.3rem 0.9rem;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem}
@@ -111,7 +103,7 @@ section{padding:5rem 2rem}
 .text-center{text-align:center}
 .text-center .section-sub{margin-left:auto;margin-right:auto}
 
-/* ══════════════ QUÉ HACEMOS ══════════════ */
+/* ── QUÉ HACEMOS ── */
 .que-hacemos{background:#fff}
 .qh-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:3.5rem;align-items:center}
 @media(min-width:768px){.qh-grid{grid-template-columns:1fr 1fr}}
@@ -125,26 +117,23 @@ section{padding:5rem 2rem}
 .qh-list li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.95rem;color:var(--text-mid);font-family:'Roboto',sans-serif;line-height:1.5}
 .qh-check{width:20px;height:20px;border-radius:50%;background:rgba(0,81,135,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
 
-/* ══════════════ SERVICIOS ══════════════ */
+/* ── SERVICIOS ── */
 .servicios{background:var(--bg-light)}
 .serv-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem}
 @media(min-width:640px){.serv-grid{grid-template-columns:repeat(2,1fr)}}
-.serv-card{background:#fff;border:1px solid var(--border);border-radius:1.25rem;padding:2rem;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:1rem}
+@media(min-width:900px){.serv-grid{grid-template-columns:repeat(2,1fr)}}
+.serv-card{background:#fff;border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem 2rem;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .serv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--blue-light));transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .serv-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,81,135,0.1);border-color:var(--blue-pale)}
 .serv-card:hover::before{transform:scaleX(1)}
-.serv-card.full{grid-column:1/-1}
-.serv-icon{width:52px;height:52px;border-radius:0.9rem;background:rgba(0,81,135,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.serv-card h3{font-size:1.05rem;font-weight:700;color:var(--text-dark)}
+.serv-icon{width:52px;height:52px;border-radius:0.9rem;background:rgba(0,81,135,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.serv-card h3{font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem}
 .serv-card ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
 .serv-card li{display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-mid);font-family:'Roboto',sans-serif}
 .serv-card li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--navy);flex-shrink:0}
-.serv-full-inner{display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap}
-.serv-full-left{display:flex;flex-direction:column;gap:0.75rem;flex-shrink:0}
-.serv-full-right{flex:1;min-width:240px}
 .serv-cta-row{margin-top:2.5rem;text-align:center}
 
-/* ══════════════ PROCESO ══════════════ */
+/* ── PROCESO ── */
 .proceso{background:#fff}
 .process-steps{display:grid;grid-template-columns:1fr;gap:0;margin-top:3rem;position:relative}
 @media(min-width:640px){.process-steps{grid-template-columns:repeat(5,1fr)}}
@@ -155,35 +144,54 @@ section{padding:5rem 2rem}
 .proc-step h4{font-size:0.85rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem}
 .proc-step p{font-size:0.78rem;color:var(--text-light);line-height:1.5;font-family:'Roboto',sans-serif}
 
-/* ══════════════ PORTAFOLIO ══════════════ */
+/* ── PORTAFOLIO ── */
 .portafolio{background:var(--bg-light)}
-.port-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem}
+.port-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem;max-width:960px;margin-left:auto;margin-right:auto}
 @media(min-width:640px){.port-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){.port-grid{grid-template-columns:repeat(3,1fr)}}
 .port-card{background:#fff;border-radius:1.25rem;overflow:hidden;border:1px solid var(--border);transition:all .3s}
 .port-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,81,135,0.12)}
-.port-img{width:100%;aspect-ratio:16/10;overflow:hidden}
+.port-img{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative}
 .port-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .port-card:hover .port-img img{transform:scale(1.04)}
+.port-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .port-info{padding:1.25rem 1.5rem}
 .port-tag{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);background:rgba(0,81,135,0.07);padding:0.2rem 0.6rem;border-radius:999px;display:inline-block;margin-bottom:0.5rem}
 .port-info h3{font-size:0.98rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem}
 .port-info p{font-size:0.8rem;color:var(--text-light);font-family:'Roboto',sans-serif;line-height:1.5}
 .port-result{display:flex;align-items:center;gap:0.4rem;margin-top:0.6rem;font-size:0.78rem;font-weight:600;color:var(--navy)}
 
-/* ══════════════ DIFERENCIADOR ══════════════ */
+/* Mock browser inside port card */
+.mock-browser-light{background:#fff;border-radius:0.5rem;overflow:hidden;border:1px solid #dde8f8;width:100%;height:100%}
+.mock-bar-light{height:22px;background:#f0f4ff;display:flex;align-items:center;padding:0 0.5rem;gap:0.3rem;border-bottom:1px solid #dde8f8}
+.mock-dot-r{width:6px;height:6px;border-radius:50%;background:#ef4444}
+.mock-dot-y{width:6px;height:6px;border-radius:50%;background:#eab308}
+.mock-dot-g{width:6px;height:6px;border-radius:50%;background:#22c55e}
+.mock-url{flex:1;background:#fff;border-radius:3px;height:10px;margin-left:6px;border:1px solid #dde8f8}
+.mock-body{padding:0.6rem;display:flex;flex-direction:column;gap:0.35rem}
+.m-hero-bar{height:35px;border-radius:4px;display:flex;align-items:center;padding:0 0.5rem;gap:0.4rem}
+.m-logo{width:40px;height:8px;border-radius:2px;background:rgba(255,255,255,0.7)}
+.m-nav{flex:1;height:6px;border-radius:2px;background:rgba(255,255,255,0.4)}
+.m-btn-sm{width:30px;height:12px;border-radius:3px;background:rgba(255,255,255,0.9)}
+.m-title{height:10px;border-radius:2px;width:70%;background:rgba(255,255,255,0.9)}
+.m-sub{height:6px;border-radius:2px;width:50%;background:rgba(255,255,255,0.6)}
+.m-cards{display:flex;gap:0.25rem;margin-top:2px}
+.m-card{flex:1;height:22px;border-radius:3px;background:#f0f4ff;border:1px solid #dde8f8}
+
+/* ── DIFERENCIADOR ── */
 .diferenciador{background:var(--navy);padding:5rem 2rem}
 .dif-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:3rem}
 @media(min-width:768px){.dif-grid{grid-template-columns:1fr 1fr}}
-.dif-no,.dif-si{display:flex;flex-direction:column;gap:0.75rem}
+.dif-no{display:flex;flex-direction:column;gap:0.75rem}
 .dif-no-item{display:flex;align-items:center;gap:0.75rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;padding:1rem 1.25rem;font-size:0.9rem;color:rgba(255,255,255,0.7)}
-.dif-no-item .x{color:#f87171;font-weight:700}
+.dif-no-item .x{color:#f87171;font-weight:700;font-size:1rem}
+.dif-si{display:flex;flex-direction:column;gap:0.75rem}
 .dif-si-item{display:flex;align-items:center;gap:0.75rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:0.75rem;padding:1rem 1.25rem;font-size:0.9rem;color:#fff;font-weight:500}
 .dif-si-item .check{color:#4ade80;font-weight:700}
 .dif-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem}
 .dif-sub{color:rgba(255,255,255,0.6);font-family:'Roboto',sans-serif;font-size:0.95rem;line-height:1.6}
 
-/* ══════════════ BENEFICIOS ══════════════ */
+/* ── BENEFICIOS ── */
 .beneficios{background:#fff}
 .ben-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:3rem}
 @media(min-width:500px){.ben-grid{grid-template-columns:repeat(2,1fr)}}
@@ -193,10 +201,11 @@ section{padding:5rem 2rem}
 .ben-card h4{font-size:0.92rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem}
 .ben-card p{font-size:0.8rem;color:var(--text-light);font-family:'Roboto',sans-serif;line-height:1.5}
 
-/* ══════════════ TESTIMONIOS ══════════════ */
+/* ── TESTIMONIOS ── */
 .testimonios{background:var(--bg-light)}
 .test-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:3rem}
 @media(min-width:640px){.test-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.test-grid{grid-template-columns:repeat(2,1fr)}}
 .test-card{background:#fff;border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem;display:flex;flex-direction:column;gap:1rem}
 .stars{display:flex;gap:0.25rem}
 .star{color:#f59e0b;font-size:0.85rem}
@@ -207,7 +216,7 @@ section{padding:5rem 2rem}
 .test-name{font-size:0.88rem;font-weight:700;color:var(--text-dark)}
 .test-biz{font-size:0.75rem;color:var(--text-light)}
 
-/* ══════════════ QUÉ NECESITAS ══════════════ */
+/* ── QUÉ NECESITAS ── */
 .necesitas{background:#fff}
 .nec-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;margin-top:3rem}
 @media(min-width:768px){.nec-grid{grid-template-columns:1fr 1fr}}
@@ -220,7 +229,7 @@ section{padding:5rem 2rem}
 .nec-card .divider{height:1px;background:var(--border);margin:1.25rem 0}
 .nec-card .small-note{font-size:0.82rem;color:var(--text-light);font-family:'Roboto',sans-serif;line-height:1.6}
 
-/* ══════════════ FORMULARIO ══════════════ */
+/* ── FORMULARIO CONTACTO ── */
 .formulario{background:var(--bg-light);padding:5rem 2rem}
 .form-wrap{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;box-shadow:0 4px 40px rgba(0,81,135,0.06)}
 .form-title{font-size:1.4rem;font-weight:800;color:var(--text-dark);margin-bottom:0.4rem;letter-spacing:-0.02em}
@@ -242,14 +251,16 @@ section{padding:5rem 2rem}
 #form-success h3{font-size:1.1rem;font-weight:700;color:#166534;margin-bottom:0.4rem}
 #form-success p{font-size:0.85rem;color:#166534;font-family:'Roboto',sans-serif}
 
-/* ══════════════ CTA FINAL ══════════════ */
+/* ── CTA FINAL ── */
 .cta-final{background:var(--navy);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
 .cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(132,182,244,0.15) 0%,transparent 70%);pointer-events:none}
+.cta-final .section-title{color:#fff}
+.cta-final .section-sub{color:rgba(255,255,255,0.65);margin:1rem auto 2.5rem}
 .btn-cta-wa{display:inline-flex;align-items:center;gap:0.75rem;background:#fff;color:var(--navy);border:none;border-radius:999px;padding:1.1rem 2.5rem;font-size:1rem;font-weight:800;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.25)}
 .btn-cta-wa:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(0,0,0,0.3);background:#f0f8ff}
 .cta-note-final{margin-top:1.25rem;font-size:0.78rem;color:rgba(255,255,255,0.4)}
 
-/* ══════════════ FOOTER ══════════════ */
+/* ── FOOTER ── */
 footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-size:0.82rem;color:rgba(255,255,255,0.35)}
 .footer-logo{font-size:1rem;font-weight:700;color:#fff}
 .footer-logo span{color:var(--blue-light)}
@@ -257,29 +268,45 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 .footer-links a{color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:#fff}
 
-/* ══════════════ REVEAL ══════════════ */
+/* ── MOBILE IMPROVEMENTS ── */
+@media(max-width:639px){
+  section{padding:3.5rem 1.25rem}
+  .hero-stats{flex-wrap:wrap}
+  .h-stat{flex:1 1 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .h-stat:nth-child(odd){border-right:1px solid rgba(255,255,255,0.08)}
+  .h-stat:last-child,.h-stat:nth-last-child(2):nth-child(odd){border-bottom:none}
+  .proc-step:not(:last-child)::after{display:none}
+  .process-steps{gap:1rem}
+  .form-wrap{padding:1.5rem}
+  .diferenciador .dif-grid{gap:2rem}
+}
+@media(max-width:767px){
+  .hero-inner{padding:5rem 1.25rem 7rem}
+  .hero-word{font-size:clamp(3rem,15vw,5.5rem)}
+}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ══════════════ WA FLOAT ══════════════ */
+/* ── WHATSAPP FLOAT ── */
 .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none;transition:transform .2s}
 .wa-float:hover{transform:scale(1.1)}
 </style>
 </head>
 <body>
 
-<a class="wa-float" href="https://wa.me/522297000789?text=Hola%20Digital48%2C%20quiero%20cotizar%20mi%20p%C3%A1gina%20web" target="_blank" aria-label="WhatsApp">
+<!-- WhatsApp Floating Button -->
+<a class="wa-float" href="https://wa.me/2297000798?text=Hola%20Digital48%2C%20quiero%20cotizar%20mi%20p%C3%A1gina%20web" target="_blank" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
-<!-- ════ HERO ════ -->
+<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero">
   <video autoplay loop muted playsinline>
     <source src="https://videos.pexels.com/video-files/5585952/5585952-hd_1920_1080_25fps.mp4" type="video/mp4"/>
   </video>
   <div class="hero-overlay"></div>
 
-  <nav>
+  <nav id="main-nav" class="transparent">
     <a class="nav-logo" href="#">
       <div class="nav-logo-mark">
         <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#fff"/><rect x="26" y="2" width="20" height="20" rx="4" fill="rgba(255,255,255,0.45)"/><rect x="2" y="26" width="20" height="20" rx="4" fill="rgba(255,255,255,0.45)"/><rect x="26" y="26" width="20" height="20" rx="4" fill="rgba(255,255,255,0.2)"/></svg>
@@ -292,10 +319,23 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
       <a href="#testimonios">Testimonios</a>
       <a href="#contacto">Contacto</a>
     </div>
-    <a class="nav-cta" href="#contacto">Cotizar ahora</a>
+    <a class="nav-cta" href="#contacto" style="display:none" id="nav-cta-desk">Cotizar ahora</a>
+    <button class="nav-hamburger" id="hamburger-btn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <div class="hero-body">
+  <!-- Mobile menu -->
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <button class="nav-mobile-close" id="mobile-close">✕</button>
+    <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#portafolio" class="mobile-link">Portafolio</a>
+    <a href="#testimonios" class="mobile-link">Testimonios</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+    <a href="#contacto" class="btn-primary mobile-link" style="margin-top:1rem">Cotizar ahora</a>
+  </div>
+
+  <div class="hero-inner">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
       Disponible ahora · Entrega en 48 horas
@@ -308,14 +348,26 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
     </div>
     <p class="hero-sub">Páginas informativas, personalizadas y optimizadas para generar clientes reales para tu negocio.</p>
     <div class="hero-bullets">
-      <div class="hero-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diseño profesional</div>
-      <div class="hero-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Optimizada para móviles</div>
-      <div class="hero-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Integración con WhatsApp</div>
-      <div class="hero-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Entrega garantizada</div>
+      <div class="hero-bullet">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Diseño profesional
+      </div>
+      <div class="hero-bullet">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Optimizada para móviles
+      </div>
+      <div class="hero-bullet">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Integración con WhatsApp
+      </div>
+      <div class="hero-bullet">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Entrega garantizada
+      </div>
     </div>
     <div class="hero-cta-row">
       <a class="btn-primary" href="#contacto">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Cotizar ahora
       </a>
       <a class="btn-secondary" href="#portafolio">Ver portafolio</a>
@@ -331,7 +383,7 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
   </div>
 </section>
 
-<!-- ════ QUÉ HACEMOS ════ -->
+<!-- ═══════════════ QUÉ HACEMOS ═══════════════ -->
 <section class="que-hacemos reveal" id="quehacemos">
 <div class="container">
   <div class="qh-grid">
@@ -340,10 +392,22 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
       <h2 class="section-title">Desarrollo web<br/>para negocios que<br/><span class="blue">quieren crecer.</span></h2>
       <p class="section-sub">Desarrollamos páginas web informativas para empresas que necesitan presencia profesional rápida. Soluciones simples, rápidas y orientadas a generar contacto con clientes.</p>
       <ul class="qh-list">
-        <li><div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Sin procesos largos ni complicados</li>
-        <li><div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Diseño enfocado en resultados reales</li>
-        <li><div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Canal directo con tus clientes vía WhatsApp</li>
-        <li><div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Escalable con marketing y automatización</li>
+        <li>
+          <div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Sin procesos largos ni complicados
+        </li>
+        <li>
+          <div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Diseño enfocado en resultados reales
+        </li>
+        <li>
+          <div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Canal directo con tus clientes vía WhatsApp
+        </li>
+        <li>
+          <div class="qh-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Escalable con marketing y automatización
+        </li>
       </ul>
       <a class="btn-primary" href="#contacto" style="margin-top:2rem;display:inline-flex">Cotizar ahora →</a>
     </div>
@@ -368,15 +432,18 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </div>
 </section>
 
-<!-- ════ SERVICIOS ════ -->
+<!-- ═══════════════ SERVICIOS ═══════════════ -->
 <section class="servicios reveal" id="servicios">
 <div class="container">
   <div style="text-align:center;margin-bottom:0.5rem"><div class="section-badge">Servicios</div></div>
   <h2 class="section-title text-center">Todo lo que necesitas<br/>para <span class="blue">dominar tu mercado</span></h2>
-  <p class="section-sub text-center" style="margin:0.9rem auto 0">Soluciones completas desde tu primera página web hasta automatización con IA.</p>
+  <p class="section-sub text-center" style="text-align:center;margin:0.9rem auto 0">Soluciones completas desde tu primera página web hasta automatización con IA.</p>
   <div class="serv-grid">
+
     <div class="serv-card">
-      <div class="serv-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="serv-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
       <h3>Página Web en 48 Horas ⚡</h3>
       <ul>
         <li>Sitio informativo completo</li>
@@ -386,8 +453,11 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
         <li>Integración con WhatsApp</li>
       </ul>
     </div>
+
     <div class="serv-card">
-      <div class="serv-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="serv-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
       <h3>SEO — Posicionamiento en Google</h3>
       <ul>
         <li>Optimización para buscadores</li>
@@ -396,8 +466,11 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
         <li>Mejora de visibilidad online</li>
       </ul>
     </div>
+
     <div class="serv-card">
-      <div class="serv-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="serv-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
       <h3>Google Ads — Publicidad Digital</h3>
       <ul>
         <li>Configuración de campañas</li>
@@ -406,136 +479,132 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
         <li>Optimización continua</li>
       </ul>
     </div>
-    <div class="serv-card full">
-      <div class="serv-full-inner">
-        <div class="serv-full-left">
-          <div class="serv-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div>
-          <h3>WhatsApp + CRM<br/>+ Inteligencia Artificial 🤖</h3>
-          <p style="font-size:0.83rem;color:var(--text-light);font-family:'Roboto',sans-serif;line-height:1.55;max-width:220px">Automatiza tu atención al cliente y nunca pierdas un prospecto.</p>
-        </div>
-        <div class="serv-full-right">
-          <ul>
-            <li>Integración de WhatsApp al sitio web</li>
-            <li>Gestión y seguimiento de conversaciones</li>
-            <li>Automatización de respuestas</li>
-            <li>Clasificación de prospectos</li>
-            <li>Bot inteligente adaptado a tu negocio</li>
-          </ul>
-        </div>
+
+    <div class="serv-card">
+      <div class="serv-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
       </div>
+      <h3>WhatsApp + CRM + IA 🤖</h3>
+      <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;font-family:'Roboto',sans-serif;line-height:1.5">Automatiza tu atención al cliente y nunca pierdas un prospecto.</p>
+      <ul>
+        <li>Integración de WhatsApp al sitio web</li>
+        <li>Gestión y seguimiento de conversaciones</li>
+        <li>Automatización de respuestas</li>
+        <li>Clasificación de prospectos</li>
+        <li>Bot inteligente adaptado a tu negocio</li>
+      </ul>
     </div>
+
   </div>
   <div class="serv-cta-row"><a class="btn-primary" href="#contacto">Cotizar ahora →</a></div>
 </div>
 </section>
 
-<!-- ════ PROCESO ════ -->
+<!-- ═══════════════ PROCESO ═══════════════ -->
 <section class="proceso reveal" id="proceso">
 <div class="container">
   <div style="text-align:center"><div class="section-badge">El proceso</div></div>
   <h2 class="section-title text-center">Tu sitio web listo<br/><span class="blue">en 5 pasos simples</span></h2>
   <div class="process-steps">
-    <div class="proc-step"><div class="proc-num">1</div><h4>Cotización</h4><p>Nos contactas y te respondemos en minutos con propuesta personalizada</p></div>
-    <div class="proc-step"><div class="proc-num">2</div><h4>Tu información</h4><p>Nos envías los datos de tu negocio, servicios, imágenes y logo</p></div>
-    <div class="proc-step"><div class="proc-num">3</div><h4>Diseño</h4><p>Desarrollamos tu página con diseño profesional en tiempo récord</p></div>
-    <div class="proc-step"><div class="proc-num">4</div><h4>Ajustes</h4><p>Revisas y nos dices cambios. Los hacemos rápido, sin complicaciones</p></div>
-    <div class="proc-step"><div class="proc-num">5</div><h4>¡Publicación! 🚀</h4><p>Tu página queda en línea y lista para recibir clientes</p></div>
+    <div class="proc-step">
+      <div class="proc-num">1</div>
+      <h4>Cotización</h4>
+      <p>Nos contactas y te respondemos en minutos con propuesta personalizada</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">2</div>
+      <h4>Tu información</h4>
+      <p>Nos envías los datos de tu negocio, servicios, imágenes y logo</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">3</div>
+      <h4>Diseño</h4>
+      <p>Desarrollamos tu página con diseño profesional en tiempo récord</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">4</div>
+      <h4>Ajustes</h4>
+      <p>Revisas y nos dices cambios. Los hacemos rápido, sin complicaciones</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">5</div>
+      <h4>¡Publicación! 🚀</h4>
+      <p>Tu página queda en línea y lista para recibir clientes</p>
+    </div>
   </div>
   <div style="text-align:center;margin-top:2.5rem"><a class="btn-primary" href="#contacto">Empezar ahora →</a></div>
 </div>
 </section>
 
-<!-- ════ PORTAFOLIO ════ -->
+<!-- ═══════════════ PORTAFOLIO ═══════════════ -->
 <section class="portafolio reveal" id="portafolio">
-  <div class="container">
-    <div style="text-align:center">
-      <div class="section-badge">Portafolio</div>
-    </div>
+<div class="container">
+  <div style="text-align:center"><div class="section-badge">Portafolio</div></div>
+  <h2 class="section-title text-center">Páginas que<br/><span class="blue">generan clientes.</span></h2>
+  <p class="section-sub text-center" style="margin:0.9rem auto 0">Proyectos reales para negocios de distintas industrias.</p>
+  <div class="port-grid">
 
-    <h2 class="section-title text-center">
-      Páginas que<br>
-      <span class="blue">generan clientes.</span>
-    </h2>
-
-    <p class="section-sub text-center" style="margin:0.9rem auto 0">
-      Proyectos reales para negocios de distintas industrias.
-    </p>
-
-    <div class="port-grid">
-
-      <!-- Toldos Ayala -->
-      <div class="port-card">
-        <div class="port-img">
-          <img src="https://i.ibb.co/BkKPvpB/imagen.jpg" alt="Toldos Ayala" loading="lazy">
-        </div>
-        <div class="port-info">
-          <div class="port-tag">Toldos</div>
-          <h3>Toldos Ayala</h3>
-          <p>Página con menú, galería y reservas por WhatsApp</p>
-          <div class="port-result">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-              <polyline points="16 7 22 7 22 13"></polyline>
-            </svg>
-            +320% pedidos en línea
-          </div>
+    <div class="port-card">
+      <div class="port-img">
+        <img src="https://i.ibb.co/TxN3rNBX/Captura-de-pantalla-2026-05-05-a-la-s-4-19-00-p-m.png" alt="Kyra Seguridad" loading="lazy"/>
+      </div>
+      <div class="port-info">
+        <div class="port-tag">Seguridad</div>
+        <h3>Kyra Seguridad</h3>
+        <p>Sitio corporativo con servicios, contacto y generación de leads</p>
+        <div class="port-result">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Más prospectos en primera semana
         </div>
       </div>
-
-      <!-- Sonrimex -->
-      <div class="port-card">
-        <div class="port-img">
-          <img src="https://i.ibb.co/zVR8gX2F/imagen.jpg" alt="Sonrimex Dentists" loading="lazy">
-        </div>
-        <div class="port-info">
-          <div class="port-tag">Fabricante</div>
-          <h3>Sonrimex</h3>
-          <p>Sitio corporativo con catálogo de productos y formulario</p>
-          <div class="port-result">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-              <polyline points="16 7 22 7 22 13"></polyline>
-            </svg>
-            3x más cotizaciones B2B
-          </div>
-        </div>
-      </div>
-
-      <!-- Kyra Seguridad -->
-      <div class="port-card">
-        <div class="port-img">
-          <img src="https://i.ibb.co/C3SGWS5d/imagen.jpg" alt="Kyra Seguridad" loading="lazy">
-        </div>
-        <div class="port-info">
-          <div class="port-tag">Seguridad</div>
-          <h3>Kyra Seguridad</h3>
-          <p>Página con servicios, galería y sistema de citas online</p>
-          <div class="port-result">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-              <polyline points="16 7 22 7 22 13"></polyline>
-            </svg>
-            +180% agendamientos
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <div style="text-align:center;margin-top:2.5rem">
-      <a class="btn-primary" href="#contacto">Quiero mi página →</a>
+    <div class="port-card">
+      <div class="port-img">
+        <img src="https://i.ibb.co/r9ftqjH/Captura-de-pantalla-2026-05-05-a-la-s-4-19-15-p-m.png" alt="Toldos Ayala" loading="lazy"/>
+      </div>
+      <div class="port-info">
+        <div class="port-tag">Manufactura / Local</div>
+        <h3>Toldos Ayala</h3>
+        <p>Página de servicios con galería de trabajos y contacto directo por WhatsApp</p>
+        <div class="port-result">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Clientes contactando desde el día 1
+        </div>
+      </div>
     </div>
+
+    <div class="port-card">
+      <div class="port-img">
+        <img src="https://i.ibb.co/d42bvPpt/Captura-de-pantalla-2026-05-05-a-la-s-4-19-35-p-m.png" alt="Sonrimex Dentists" loading="lazy"/>
+      </div>
+      <div class="port-info">
+        <div class="port-tag">Salud / Dental</div>
+        <h3>Sonrimex Dentists</h3>
+        <p>Sitio dental con servicios, galería y agenda de citas vía WhatsApp</p>
+        <div class="port-result">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          +180% agendamientos en 30 días
+        </div>
+      </div>
+    </div>
+
+
   </div>
+  <div style="text-align:center;margin-top:2.5rem"><a class="btn-primary" href="#contacto" style="background:var(--navy)">Quiero mi página →</a></div>
+</div>
 </section>
 
-<!-- ════ DIFERENCIADOR ════ -->
+<!-- ═══════════════ DIFERENCIADOR ═══════════════ -->
 <section class="diferenciador reveal" id="diferenciador">
 <div class="container">
-  <div style="text-align:center">
-    <div class="section-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.8)">Por qué elegirnos</div>
-    <h2 class="dif-title">No somos una<br/>agencia tradicional.</h2>
-    <p class="dif-sub">Entrega rápida, funcional y enfocada en generar contacto real con tus clientes. Sin burocracia, sin esperas interminables.</p>
-    <a class="btn-cta-wa" href="#contacto" style="margin-top:1.75rem;display:inline-flex">Cotizar ahora →</a>
+  <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center">
+    <div style="text-align:center">
+      <div class="section-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.8)">Por qué elegirnos</div>
+      <h2 class="dif-title">No somos una<br/>agencia tradicional.</h2>
+      <p class="dif-sub">Entrega rápida, funcional y enfocada en generar contacto real con tus clientes. Sin burocracia, sin esperas interminables.</p>
+      <a class="btn-cta-wa" href="#contacto" style="margin-top:1.75rem;display:inline-flex">Cotizar ahora →</a>
+    </div>
   </div>
   <div class="dif-grid" style="margin-top:3rem">
     <div>
@@ -562,37 +631,95 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </div>
 </section>
 
-<!-- ════ BENEFICIOS ════ -->
+<!-- ═══════════════ BENEFICIOS ═══════════════ -->
 <section class="beneficios reveal" id="beneficios">
 <div class="container">
   <div style="text-align:center"><div class="section-badge">Beneficios</div></div>
   <h2 class="section-title text-center">Lo que obtienes<br/><span class="blue">con Digital48</span></h2>
   <div class="ben-grid">
-    <div class="ben-card"><div class="ben-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h4>Entrega en 48 horas</h4><p>De solicitud a página publicada en dos días. Sin esperas interminables.</p></div></div>
-    <div class="ben-card"><div class="ben-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div><div><h4>Canal directo con clientes</h4><p>WhatsApp integrado para que los clientes te contacten al instante.</p></div></div>
-    <div class="ben-card"><div class="ben-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div><h4>100% responsive</h4><p>Se ve perfecta en celular, tablet y computadora.</p></div></div>
-    <div class="ben-card"><div class="ben-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><h4>Enfocada en resultados</h4><p>Cada elemento diseñado para convertir visitantes en clientes.</p></div></div>
-    <div class="ben-card"><div class="ben-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><h4>Optimizada para Google</h4><p>Estructura SEO lista para posicionarte en los primeros resultados.</p></div></div>
-    <div class="ben-card"><div class="ben-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div><h4>Escalable con IA</h4><p>Crece con automatización, CRM y bot inteligente cuando lo necesites.</p></div></div>
+    <div class="ben-card">
+      <div class="ben-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div><h4>Entrega en 48 horas</h4><p>De solicitud a página publicada en dos días. Sin esperas interminables.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+      </div>
+      <div><h4>Canal directo con clientes</h4><p>WhatsApp integrado para que los clientes te contacten al instante.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div><h4>100% responsive</h4><p>Se ve perfecta en celular, tablet y computadora.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div><h4>Enfocada en resultados</h4><p>Cada elemento diseñado para convertir visitantes en clientes.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div><h4>Optimizada para Google</h4><p>Estructura SEO lista para posicionarte en los primeros resultados.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div><h4>Escalable con IA</h4><p>Crece con automatización, CRM y bot inteligente cuando lo necesites.</p></div>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- ════ TESTIMONIOS ════ -->
+<!-- ═══════════════ TESTIMONIOS ═══════════════ -->
 <section class="testimonios reveal" id="testimonios">
 <div class="container">
   <div style="text-align:center"><div class="section-badge">Testimonios</div></div>
   <h2 class="section-title text-center">Lo que dicen<br/><span class="blue">nuestros clientes</span></h2>
   <div class="test-grid">
-    <div class="test-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="test-quote">En menos de dos días ya teníamos nuestra página funcionando y con clientes escribiéndonos por WhatsApp. Increíble la rapidez y calidad del servicio.</p><div class="test-author"><div class="test-avatar" style="background:#005187">MG</div><div><div class="test-name">María González</div><div class="test-biz">Restaurante · Guadalajara</div></div></div></div>
-    <div class="test-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="test-quote">Necesitábamos presencia online rápido. Quedó listo en tiempo récord, sin complicaciones. Ahora nos llegan cotizaciones de empresas que nos buscaron en Google.</p><div class="test-author"><div class="test-avatar" style="background:#4d82bc">CR</div><div><div class="test-name">Carlos Ramírez</div><div class="test-biz">Fabricante · Monterrey</div></div></div></div>
-    <div class="test-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="test-quote">El sitio quedó claro, profesional y empezamos a recibir contactos desde la primera semana. La inversión se recuperó rapidísimo.</p><div class="test-author"><div class="test-avatar" style="background:#005187">LP</div><div><div class="test-name">Laura Pérez</div><div class="test-biz">Servicios Profesionales · CDMX</div></div></div></div>
-    <div class="test-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="test-quote">Lo más útil fue la integración con WhatsApp. Ahora los clientes nos contactan directamente y no perdemos ninguna oportunidad de venta.</p><div class="test-author"><div class="test-avatar" style="background:#84b6f4;color:#005187">JM</div><div><div class="test-name">Jorge Molina</div><div class="test-biz">Negocio Local · León</div></div></div></div>
+    <div class="test-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="test-quote">En menos de dos días ya teníamos nuestra página funcionando y con clientes escribiéndonos por WhatsApp. Increíble la rapidez y calidad del servicio.</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:#005187">MG</div>
+        <div><div class="test-name">María González</div><div class="test-biz">Restaurante · Guadalajara</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="test-quote">Necesitábamos presencia online rápido. Quedó listo en tiempo récord, sin complicaciones. Ahora nos llegan cotizaciones de empresas que nos buscaron en Google.</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:#4d82bc">CR</div>
+        <div><div class="test-name">Carlos Ramírez</div><div class="test-biz">Fabricante · Monterrey</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="test-quote">El sitio quedó claro, profesional y empezamos a recibir contactos desde la primera semana. La inversión se recuperó rapidísimo.</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:#005187">LP</div>
+        <div><div class="test-name">Laura Pérez</div><div class="test-biz">Servicios Profesionales · CDMX</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="test-quote">Lo más útil fue la integración con WhatsApp. Ahora los clientes nos contactan directamente y no perdemos ninguna oportunidad de venta.</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:#84b6f4;color:#005187">JM</div>
+        <div><div class="test-name">Jorge Molina</div><div class="test-biz">Negocio Local · León</div></div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- ════ QUÉ NECESITAS ════ -->
+<!-- ═══════════════ QUÉ NECESITAS ═══════════════ -->
 <section class="necesitas reveal" id="necesitas">
 <div class="container">
   <div class="nec-grid">
@@ -625,7 +752,7 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </div>
 </section>
 
-<!-- ════ FORMULARIO — ENVÍA A WA 229 700 0789 ════ -->
+<!-- ═══════════════ FORMULARIO CONTACTO ═══════════════ -->
 <section class="formulario reveal" id="contacto">
 <div class="container">
   <div style="text-align:center;margin-bottom:2.5rem">
@@ -638,39 +765,62 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
     <p class="form-sub">Te respondemos en menos de 1 hora · Sin compromiso · Desarrollo inmediato</p>
     <form id="cotizacion-form">
       <div class="form-grid">
-        <div class="form-group"><label for="nombre">Nombre completo *</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/></div>
-        <div class="form-group"><label for="empresa">Nombre de empresa / negocio *</label><input type="text" id="empresa" name="empresa" placeholder="Ej: Taquería El Güero" required/></div>
+        <div class="form-group">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Nombre de empresa / negocio *</label>
+          <input type="text" id="empresa" name="empresa" placeholder="Ej: Taquería El Güero" required/>
+        </div>
         <div class="form-group">
           <label for="industria">Tipo de negocio o industria *</label>
           <select id="industria" name="industria" required>
             <option value="" disabled selected>Selecciona tu industria</option>
-            <option>Restaurante / Alimentos</option><option>Fabricante / Manufactura</option>
-            <option>Negocio local / Comercio</option><option>Servicios profesionales</option>
-            <option>Salud / Bienestar</option><option>Inmobiliaria</option>
-            <option>Educación</option><option>Tecnología</option>
-            <option>Construcción</option><option>Otro</option>
+            <option>Restaurante / Alimentos</option>
+            <option>Fabricante / Manufactura</option>
+            <option>Negocio local / Comercio</option>
+            <option>Servicios profesionales</option>
+            <option>Salud / Bienestar</option>
+            <option>Inmobiliaria</option>
+            <option>Educación</option>
+            <option>Tecnología</option>
+            <option>Construcción</option>
+            <option>Otro</option>
           </select>
         </div>
-        <div class="form-group"><label for="telefono">Número de teléfono / WhatsApp *</label><input type="tel" id="telefono" name="telefono" placeholder="+52 55 1234 5678" required/></div>
+        <div class="form-group">
+          <label for="telefono">Número de teléfono / WhatsApp *</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+52 55 1234 5678" required/>
+        </div>
         <div class="form-group">
           <label for="presupuesto">Presupuesto aproximado</label>
           <select id="presupuesto" name="presupuesto">
             <option value="" disabled selected>Selecciona tu presupuesto</option>
-            <option>Menos de $5,000 MXN</option><option>$5,000 – $10,000 MXN</option>
-            <option>$10,000 – $20,000 MXN</option><option>$20,000 – $50,000 MXN</option>
-            <option>Más de $50,000 MXN</option><option>Aún no lo tengo definido</option>
+            <option>Menos de $5,000 MXN</option>
+            <option>$5,000 – $10,000 MXN</option>
+            <option>$10,000 – $20,000 MXN</option>
+            <option>$20,000 – $50,000 MXN</option>
+            <option>Más de $50,000 MXN</option>
+            <option>Aún no lo tengo definido</option>
           </select>
         </div>
         <div class="form-group">
           <label for="servicio">Servicio de interés</label>
           <select id="servicio" name="servicio">
             <option value="" disabled selected>¿Qué necesitas?</option>
-            <option>Página web en 48 horas</option><option>SEO / Posicionamiento</option>
-            <option>Google Ads</option><option>WhatsApp + CRM + IA</option>
-            <option>Paquete completo</option><option>No sé, necesito asesoría</option>
+            <option>Página web en 48 horas</option>
+            <option>SEO / Posicionamiento</option>
+            <option>Google Ads</option>
+            <option>WhatsApp + CRM + IA</option>
+            <option>Paquete completo</option>
+            <option>No sé, necesito asesoría</option>
           </select>
         </div>
-        <div class="form-group full"><label for="detalles">Cuéntanos sobre tu negocio y lo que necesitas</label><textarea id="detalles" name="detalles" placeholder="Ej: Tengo un restaurante en Guadalajara y necesito una página donde los clientes puedan ver el menú y contactarme por WhatsApp..."></textarea></div>
+        <div class="form-group full">
+          <label for="detalles">Cuéntanos sobre tu negocio y lo que necesitas</label>
+          <textarea id="detalles" name="detalles" placeholder="Ej: Tengo un restaurante en Guadalajara y necesito una página donde los clientes puedan ver el menú y contactarme por WhatsApp..."></textarea>
+        </div>
       </div>
       <div class="form-submit">
         <button type="submit" class="btn-form">
@@ -688,7 +838,7 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </div>
 </section>
 
-<!-- ════ CTA FINAL ════ -->
+<!-- ═══════════════ CTA FINAL ═══════════════ -->
 <section class="cta-final reveal">
 <div class="container">
   <div class="section-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);margin:0 auto 1rem;display:table">Empieza hoy</div>
@@ -704,37 +854,60 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Digital<span>48</span></div>
   <div class="footer-links">
-    <a href="#servicios">Servicios</a><a href="#portafolio">Portafolio</a>
-    <a href="#testimonios">Testimonios</a><a href="#contacto">Contacto</a>
-    <a href="https://wa.me/522297000789" target="_blank">WhatsApp</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#portafolio">Portafolio</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/2297000798" target="_blank">WhatsApp</a>
   </div>
   <div>© 2025 Digital48. Todos los derechos reservados.</div>
 </footer>
 
 <script>
-const revealEls=document.querySelectorAll('.reveal');
+// Fixed nav — transparent on hero, solid when scrolled
+const nav=document.getElementById('main-nav');
+const navCta=document.getElementById('nav-cta-desk');
+function updateNav(){
+  if(window.scrollY>60){
+    nav.classList.remove('transparent');nav.classList.add('scrolled');
+    if(navCta)navCta.style.display='inline-flex';
+  }else{
+    nav.classList.add('transparent');nav.classList.remove('scrolled');
+    if(navCta)navCta.style.display='none';
+  }
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+updateNav();
+
+// Hamburger
+const hamburgerBtn=document.getElementById('hamburger-btn');
+const mobileMenu=document.getElementById('mobile-menu');
+const mobileClose=document.getElementById('mobile-close');
+if(hamburgerBtn)hamburgerBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+if(mobileClose)mobileClose.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+
+// Scroll reveal
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
 },{threshold:0.08});
-revealEls.forEach(el=>obs.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+// Form → WhatsApp
 document.getElementById('cotizacion-form').addEventListener('submit',function(e){
   e.preventDefault();
-  const nombre=document.getElementById('nombre').value;
-  const empresa=document.getElementById('empresa').value;
-  const industria=document.getElementById('industria').value;
-  const telefono=document.getElementById('telefono').value;
-  const presupuesto=document.getElementById('presupuesto').value;
-  const servicio=document.getElementById('servicio').value;
-  const detalles=document.getElementById('detalles').value;
-  const msg=`¡Hola Digital48! Quiero cotizar una página web 🚀\n\n👤 *Nombre:* ${nombre}\n🏢 *Empresa:* ${empresa}\n🏭 *Industria:* ${industria}\n📱 *Teléfono:* ${telefono}\n💰 *Presupuesto:* ${presupuesto||'No especificado'}\n🛠️ *Servicio de interés:* ${servicio||'No especificado'}\n📝 *Detalles:*\n${detalles||'Sin detalles adicionales'}\n\n¡Espero su respuesta!`;
+  const g=id=>document.getElementById(id).value;
+  const msg=`¡Hola Digital48! Quiero cotizar una página web 🚀\n\n👤 *Nombre:* ${g('nombre')}\n🏢 *Empresa:* ${g('empresa')}\n🏭 *Industria:* ${g('industria')}\n📱 *Teléfono:* ${g('telefono')}\n💰 *Presupuesto:* ${g('presupuesto')||'No especificado'}\n🛠️ *Servicio:* ${g('servicio')||'No especificado'}\n📝 *Detalles:* ${g('detalles')||'Sin detalles'}\n\n¡Espero su respuesta!`;
   document.getElementById('form-success').style.display='block';
-  setTimeout(()=>{window.open(`https://wa.me/522297000798?text=${encodeURIComponent(msg)}`,'_blank')},600);
+  this.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);
+  setTimeout(()=>window.open(`https://wa.me/2297000798?text=${encodeURIComponent(msg)}`,'_blank'),600);
 });
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
