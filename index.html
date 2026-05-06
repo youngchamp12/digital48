@@ -30,7 +30,7 @@ body{font-family:'Poppins',system-ui,sans-serif;background:#fff;color:#1a1a2e;-w
 /* ── HERO ── */
 .hero{position:relative;height:100vh;min-height:640px;width:100%;overflow:hidden;background:#000}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,10,30,0.78) 0%,rgba(0,20,50,0.85) 60%,rgba(0,10,30,0.92) 100%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.6) 50%,rgba(0,0,0,0.85) 100%), linear-gradient(to bottom,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.95) 100%);}
 
 /* NAV — fixed always on top */
 nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background .3s,box-shadow .3s,padding .3s}
@@ -57,41 +57,31 @@ nav.scrolled{background:rgba(5,15,35,0.97);backdrop-filter:blur(16px);box-shadow
 .nav-cta{background:var(--navy);color:#fff;font-size:0.85rem;font-weight:600;border:none;border-radius:999px;padding:0.7rem 1.5rem;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap;font-family:'Poppins',sans-serif}
 .nav-cta:hover{background:var(--cta-hover)}
 
-/* HERO CONTENT */
-.hero-inner{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:5.5rem 2rem 7rem;text-align:center;gap:0}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:0.35rem 1rem;font-size:0.75rem;color:rgba(255,255,255,0.85);margin-bottom:0.9rem;letter-spacing:0.05em}
-.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
-.hero-brand{font-size:clamp(0.75rem,1.8vw,1rem);font-weight:600;color:var(--blue-pale);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem}
+/* HERO CONTENT GOPRO STYLE */
+.hero-inner-gopro{position:relative;z-index:10;height:100%;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 2rem;max-width:1400px;margin:0 auto}
+.hg-layout{position:relative;width:100%;height:100%;display:flex;align-items:center}
+.hg-left{display:flex;flex-direction:column;gap:1.25rem;text-align:left;z-index:3;max-width:550px}
+.hg-title{font-size:clamp(3rem,5vw,5rem);font-weight:900;color:#fff;line-height:0.95;letter-spacing:-0.03em;margin:0;text-shadow:0 10px 30px rgba(0,0,0,0.8)}
+.hg-title span{display:block;background:linear-gradient(180deg,#fff 0%,#84b6f4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;line-height:1}
+.hg-sub{font-size:1.1rem;color:rgba(255,255,255,0.8);max-width:450px;line-height:1.6}
+.hg-bullets{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1rem;list-style:none}
+.hg-bullets li{display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;color:rgba(255,255,255,0.9);font-weight:500;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.hg-bullets li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--blue-light);box-shadow:0 0 10px var(--blue-light)}
+.hg-cta-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-top:0.5rem}
+.hg-btn-minimal{color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:0.3rem;transition:all .3s}
+.hg-btn-minimal:hover{border-bottom-color:#fff;text-shadow:0 0 10px rgba(255,255,255,0.5)}
 
-/* Giant words with gradient */
-.hero-headline{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:1.1rem;line-height:0.9}
-.hero-word{font-size:clamp(3.8rem,11vw,9.5rem);font-weight:900;letter-spacing:-0.04em;line-height:0.92;
-  background:linear-gradient(180deg,#ffffff 30%,rgba(255,255,255,0.45) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  display:block}
-.hero-word.accent{background:linear-gradient(180deg,#84b6f4 0%,#4d82bc 60%,#005187 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* Right side - Glowing 48 and Mac */
+.hg-right{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2}
+.hg-glow-text{position:absolute;font-size:clamp(15rem,30vw,40rem);font-weight:900;color:#fff;line-height:1;z-index:1;text-shadow:0 0 40px rgba(255,255,255,0.6),0 0 120px rgba(132,182,244,0.4);opacity:0.95;top:50%;right:2%;transform:translateY(-50%);letter-spacing:-0.05em}
+.hg-mac{position:relative;z-index:2;width:100%;max-width:1100px;filter:drop-shadow(0 40px 60px rgba(0,0,0,0.9));animation:float-mac 6s ease-in-out infinite, enter-mac 1.5s cubic-bezier(0.2,0.8,0.2,1) forwards;opacity:0}
+@keyframes float-mac{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(-1deg)}100%{transform:translateY(0) rotate(0)}}
+@keyframes enter-mac{from{opacity:0;transform:translateY(150px) scale(0.85)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-.hero-sub{font-size:clamp(0.85rem,1.6vw,1rem);color:rgba(255,255,255,0.7);max-width:500px;line-height:1.6;margin-bottom:1rem;font-weight:400}
-
-/* Bullets hero */
-.hero-bullets{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:1.25rem}
-.hero-bullet{display:flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:999px;padding:0.28rem 0.85rem;font-size:0.74rem;color:rgba(255,255,255,0.82)}
-.hero-bullet svg{flex-shrink:0}
-
-.hero-cta-row{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.75rem;width:100%;flex-wrap:wrap}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:0.55rem;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:0.8rem 1.75rem;font-size:0.9rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif;box-shadow:0 8px 30px rgba(0,81,135,0.5);white-space:nowrap}
 .btn-primary:hover{background:var(--cta-hover);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,81,135,0.65)}
 .btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:0.8rem 1.75rem;font-size:0.9rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Poppins',sans-serif;white-space:nowrap}
 .btn-secondary:hover{background:rgba(255,255,255,0.18)}
-
-.hero-note{font-size:0.7rem;color:rgba(255,255,255,0.38);text-align:center;letter-spacing:0.02em}
-
-/* Hero stats bar */
-.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;justify-content:center;gap:0;background:rgba(0,15,40,0.7);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,0.08)}
-.h-stat{flex:1;max-width:200px;padding:1.1rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
-.h-stat:last-child{border-right:none}
-.h-stat-num{font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-0.03em}
-.h-stat-label{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.1rem}
 
 /* ── SECTIONS BASE ── */
 section{padding:5rem 2rem}
@@ -146,37 +136,24 @@ section{padding:5rem 2rem}
 
 /* ── PORTAFOLIO ── */
 .portafolio{background:var(--bg-light)}
-.port-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem;max-width:960px;margin-left:auto;margin-right:auto}
+.port-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:3.5rem;max-width:1200px;margin-left:auto;margin-right:auto;perspective:1000px}
 @media(min-width:640px){.port-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:900px){.port-grid{grid-template-columns:repeat(3,1fr)}}
-.port-card{background:#fff;border-radius:1.25rem;overflow:hidden;border:1px solid var(--border);transition:all .3s}
-.port-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,81,135,0.12)}
-.port-img{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative}
-.port-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.port-card:hover .port-img img{transform:scale(1.04)}
-.port-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.port-info{padding:1.25rem 1.5rem}
-.port-tag{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);background:rgba(0,81,135,0.07);padding:0.2rem 0.6rem;border-radius:999px;display:inline-block;margin-bottom:0.5rem}
-.port-info h3{font-size:0.98rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem}
-.port-info p{font-size:0.8rem;color:var(--text-light);font-family:'Roboto',sans-serif;line-height:1.5}
-.port-result{display:flex;align-items:center;gap:0.4rem;margin-top:0.6rem;font-size:0.78rem;font-weight:600;color:var(--navy)}
-
-/* Mock browser inside port card */
-.mock-browser-light{background:#fff;border-radius:0.5rem;overflow:hidden;border:1px solid #dde8f8;width:100%;height:100%}
-.mock-bar-light{height:22px;background:#f0f4ff;display:flex;align-items:center;padding:0 0.5rem;gap:0.3rem;border-bottom:1px solid #dde8f8}
-.mock-dot-r{width:6px;height:6px;border-radius:50%;background:#ef4444}
-.mock-dot-y{width:6px;height:6px;border-radius:50%;background:#eab308}
-.mock-dot-g{width:6px;height:6px;border-radius:50%;background:#22c55e}
-.mock-url{flex:1;background:#fff;border-radius:3px;height:10px;margin-left:6px;border:1px solid #dde8f8}
-.mock-body{padding:0.6rem;display:flex;flex-direction:column;gap:0.35rem}
-.m-hero-bar{height:35px;border-radius:4px;display:flex;align-items:center;padding:0 0.5rem;gap:0.4rem}
-.m-logo{width:40px;height:8px;border-radius:2px;background:rgba(255,255,255,0.7)}
-.m-nav{flex:1;height:6px;border-radius:2px;background:rgba(255,255,255,0.4)}
-.m-btn-sm{width:30px;height:12px;border-radius:3px;background:rgba(255,255,255,0.9)}
-.m-title{height:10px;border-radius:2px;width:70%;background:rgba(255,255,255,0.9)}
-.m-sub{height:6px;border-radius:2px;width:50%;background:rgba(255,255,255,0.6)}
-.m-cards{display:flex;gap:0.25rem;margin-top:2px}
-.m-card{flex:1;height:22px;border-radius:3px;background:#f0f4ff;border:1px solid #dde8f8}
+.port-card{background:#000;border-radius:1.5rem;overflow:hidden;border:1px solid var(--border);transition:all .5s cubic-bezier(0.25,0.8,0.25,1);transform-style:preserve-3d;opacity:0;animation:fade-in-up .8s ease forwards;position:relative;aspect-ratio:16/9}
+@keyframes fade-in-up{from{opacity:0;transform:translateY(40px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.port-card:nth-child(1){animation-delay:.1s}
+.port-card:nth-child(2){animation-delay:.2s}
+.port-card:nth-child(3){animation-delay:.3s}
+.port-card:nth-child(4){animation-delay:.4s}
+.port-card:nth-child(5){animation-delay:.5s}
+.port-card:nth-child(6){animation-delay:.6s}
+.port-card:hover{transform:translateY(-10px) scale(1.06) rotateX(4deg) rotateY(-4deg);box-shadow:0 25px 50px rgba(0,81,135,0.3),0 0 30px rgba(132,182,244,0.6);border-color:var(--blue-light);z-index:10}
+.port-card::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0) 100%);transform:skewX(-25deg);transition:all .7s ease;pointer-events:none;z-index:5}
+.port-card:hover::after{left:150%}
+.port-img{width:100%;height:100%;overflow:hidden;position:absolute;inset:0}
+.port-img video{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.port-card:hover .port-img video{transform:scale(1.05)}
+.port-info{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem 1.5rem;background:linear-gradient(to top,rgba(0,10,30,0.95) 0%,rgba(0,10,30,0.4) 60%,transparent 100%);color:#fff;z-index:2;display:flex;align-items:flex-end}
+.port-info h3{font-size:1.6rem;font-weight:800;color:#fff;margin:0;text-shadow:0 2px 10px rgba(0,0,0,0.5);letter-spacing:-0.02em}
 
 /* ── DIFERENCIADOR ── */
 .diferenciador{background:var(--navy);padding:5rem 2rem}
@@ -302,16 +279,14 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero">
   <video autoplay loop muted playsinline>
-    <source src="https://videos.pexels.com/video-files/5585952/5585952-hd_1920_1080_25fps.mp4" type="video/mp4"/>
+    <source src="14483720_1920_1080_30fps.mp4" type="video/mp4"/>
   </video>
   <div class="hero-overlay"></div>
+  <canvas id="particles-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%;opacity:0.8;"></canvas>
 
   <nav id="main-nav" class="transparent">
     <a class="nav-logo" href="#">
-      <div class="nav-logo-mark">
-        <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#fff"/><rect x="26" y="2" width="20" height="20" rx="4" fill="rgba(255,255,255,0.45)"/><rect x="2" y="26" width="20" height="20" rx="4" fill="rgba(255,255,255,0.45)"/><rect x="26" y="26" width="20" height="20" rx="4" fill="rgba(255,255,255,0.2)"/></svg>
-      </div>
-      <span class="nav-logo-text">Digital<span>48</span></span>
+      <img src="../logo.png" alt="Digital48 Logo" style="height:36px; object-fit:contain;"/>
     </a>
     <div class="nav-links">
       <a href="#servicios">Servicios</a>
@@ -335,51 +310,27 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
     <a href="#contacto" class="btn-primary mobile-link" style="margin-top:1rem">Cotizar ahora</a>
   </div>
 
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Disponible ahora · Entrega en 48 horas
-    </div>
-    <div class="hero-brand">Digital 48</div>
-    <div class="hero-headline">
-      <span class="hero-word">Tu página</span>
-      <span class="hero-word">web lista</span>
-      <span class="hero-word accent">en 48 hrs.</span>
-    </div>
-    <p class="hero-sub">Páginas informativas, personalizadas y optimizadas para generar clientes reales para tu negocio.</p>
-    <div class="hero-bullets">
-      <div class="hero-bullet">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Diseño profesional
+  <div class="hero-inner-gopro">
+    <div class="hg-layout">
+      <div class="hg-left">
+        <h1 class="hg-title">Tu página<br>web lista<br><span>en 48 hrs.</span></h1>
+        <p class="hg-sub">Páginas informativas, personalizadas y optimizadas para generar clientes reales para tu negocio.</p>
+        <ul class="hg-bullets">
+          <li>Diseño profesional</li>
+          <li>Optimizada para móviles</li>
+          <li>Integración con WhatsApp</li>
+          <li>Entrega garantizada</li>
+        </ul>
+        <div class="hg-cta-row">
+          <a class="btn-primary" href="#contacto" style="box-shadow: 0 0 20px rgba(0, 81, 135, 0.6);">Cotizar ahora</a>
+          <a class="hg-btn-minimal" href="#portafolio">Ver portafolio</a>
+        </div>
       </div>
-      <div class="hero-bullet">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Optimizada para móviles
-      </div>
-      <div class="hero-bullet">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Integración con WhatsApp
-      </div>
-      <div class="hero-bullet">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Entrega garantizada
+      <div class="hg-right">
+        <div class="hg-glow-text">48</div>
+        <img src="../mac.png" alt="MacBook" class="hg-mac" />
       </div>
     </div>
-    <div class="hero-cta-row">
-      <a class="btn-primary" href="#contacto">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        Cotizar ahora
-      </a>
-      <a class="btn-secondary" href="#portafolio">Ver portafolio</a>
-    </div>
-    <p class="hero-note">Sin costos ocultos · Respuesta en minutos · Desarrollo inmediato</p>
-  </div>
-
-  <div class="hero-stats">
-    <div class="h-stat"><div class="h-stat-num">+120</div><div class="h-stat-label">proyectos entregados</div></div>
-    <div class="h-stat"><div class="h-stat-num">48 hrs</div><div class="h-stat-label">tiempo de entrega</div></div>
-    <div class="h-stat"><div class="h-stat-num">+80%</div><div class="h-stat-label">más leads en promedio</div></div>
-    <div class="h-stat"><div class="h-stat-num">100%</div><div class="h-stat-label">clientes satisfechos</div></div>
   </div>
 </section>
 
@@ -546,49 +497,57 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 
     <div class="port-card">
       <div class="port-img">
-        <img src="https://i.ibb.co/TxN3rNBX/Captura-de-pantalla-2026-05-05-a-la-s-4-19-00-p-m.png" alt="Kyra Seguridad" loading="lazy"/>
+        <video src="kimo.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="port-info">
-        <div class="port-tag">Seguridad</div>
-        <h3>Kyra Seguridad</h3>
-        <p>Sitio corporativo con servicios, contacto y generación de leads</p>
-        <div class="port-result">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          Más prospectos en primera semana
-        </div>
+        <h3>Scooters</h3>
       </div>
     </div>
 
     <div class="port-card">
       <div class="port-img">
-        <img src="https://i.ibb.co/r9ftqjH/Captura-de-pantalla-2026-05-05-a-la-s-4-19-15-p-m.png" alt="Toldos Ayala" loading="lazy"/>
+        <video src="kira.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="port-info">
-        <div class="port-tag">Manufactura / Local</div>
-        <h3>Toldos Ayala</h3>
-        <p>Página de servicios con galería de trabajos y contacto directo por WhatsApp</p>
-        <div class="port-result">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          Clientes contactando desde el día 1
-        </div>
+        <h3>Seguridad</h3>
       </div>
     </div>
 
     <div class="port-card">
       <div class="port-img">
-        <img src="https://i.ibb.co/d42bvPpt/Captura-de-pantalla-2026-05-05-a-la-s-4-19-35-p-m.png" alt="Sonrimex Dentists" loading="lazy"/>
+        <video src="momento.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="port-info">
-        <div class="port-tag">Salud / Dental</div>
-        <h3>Sonrimex Dentists</h3>
-        <p>Sitio dental con servicios, galería y agenda de citas vía WhatsApp</p>
-        <div class="port-result">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          +180% agendamientos en 30 días
-        </div>
+        <h3>Arreglos Florales</h3>
       </div>
     </div>
 
+    <div class="port-card">
+      <div class="port-img">
+        <video src="odontologa.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="port-info">
+        <h3>Dentista</h3>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <div class="port-img">
+        <video src="sonrimex.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="port-info">
+        <h3>Dentistas</h3>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <div class="port-img">
+        <video src="tpoldos.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="port-info">
+        <h3>Toldos</h3>
+      </div>
+    </div>
 
   </div>
   <div style="text-align:center;margin-top:2.5rem"><a class="btn-primary" href="#contacto" style="background:var(--navy)">Quiero mi página →</a></div>
@@ -868,6 +827,69 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </footer>
 
 <script>
+// Particles animation
+const canvas = document.getElementById('particles-canvas');
+if(canvas){
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  let mouse = { x: -9999, y: -9999 };
+  
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 2 + 0.5;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = Math.random() * -1 - 0.5; 
+      this.color = `rgba(132, 182, 244, ${Math.random() * 0.5 + 0.2})`;
+    }
+    update() {
+      this.y += this.vy;
+      this.x += this.vx;
+      
+      if (this.y < -10) this.y = height + 10;
+      if (this.x < -10) this.x = width + 10;
+      if (this.x > width + 10) this.x = -10;
+
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        this.x -= dx * 0.03;
+        this.y -= dy * 0.03;
+      }
+    }
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
 // Fixed nav — transparent on hero, solid when scrolled
 const nav=document.getElementById('main-nav');
 const navCta=document.getElementById('nav-cta-desk');
