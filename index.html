@@ -217,26 +217,28 @@ section{padding:5rem 2rem}
 .nec-card .small-note{font-size:0.82rem;color:var(--text-light);font-family:'Roboto',sans-serif;line-height:1.6}
 
 /* ── FORMULARIO CONTACTO ── */
-.formulario{background:var(--bg-light);padding:5rem 2rem}
-.form-wrap{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;box-shadow:0 4px 40px rgba(0,81,135,0.06)}
-.form-title{font-size:1.4rem;font-weight:800;color:var(--text-dark);margin-bottom:0.4rem;letter-spacing:-0.02em}
-.form-sub{font-size:0.88rem;color:var(--text-light);margin-bottom:1.75rem;font-family:'Roboto',sans-serif}
-.form-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+.formulario{background:#000;padding:6rem 2rem;position:relative;overflow:hidden}
+.form-wrap{max-width:720px;margin:0 auto;background:rgba(15,25,45,0.75);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.15);border-radius:1.5rem;padding:3rem;box-shadow:0 25px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);position:relative;z-index:2;animation:form-float 6s ease-in-out infinite}
+@keyframes form-float {0%, 100% {transform: translateY(0);} 50% {transform: translateY(-8px);}}
+.form-title{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:0.4rem;letter-spacing:-0.02em}
+.form-sub{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-bottom:2rem;font-family:'Roboto',sans-serif}
+.form-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
 @media(min-width:560px){.form-grid{grid-template-columns:1fr 1fr}}
-.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group{display:flex;flex-direction:column;gap:0.5rem}
 .form-group.full{grid-column:1/-1}
-.form-group label{font-size:0.8rem;font-weight:600;color:var(--text-dark)}
-.form-group input,.form-group select,.form-group textarea{font-family:'Poppins',sans-serif;font-size:0.88rem;color:var(--text-dark);background:#fff;border:1.5px solid var(--border);border-radius:0.65rem;padding:0.7rem 1rem;outline:none;transition:border-color .2s;width:100%}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--navy)}
-.form-group textarea{resize:vertical;min-height:90px;line-height:1.55}
+.form-group label{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:0.02em}
+.form-group input,.form-group select,.form-group textarea{font-family:'Poppins',sans-serif;font-size:0.9rem;color:#fff;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:0.75rem;padding:0.8rem 1rem;outline:none;transition:all .3s;width:100%}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue-light);background:rgba(0,0,0,0.8);box-shadow:0 0 20px rgba(132,182,244,0.15)}
+.form-group textarea{resize:vertical;min-height:100px;line-height:1.55}
 .form-group select{-webkit-appearance:none;cursor:pointer}
-.form-submit{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:0.5rem;flex-wrap:wrap}
-.btn-form{display:inline-flex;align-items:center;gap:0.6rem;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:0.9rem 2rem;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;box-shadow:0 4px 20px rgba(0,81,135,0.3)}
-.btn-form:hover{background:var(--cta-hover);transform:translateY(-2px)}
-.form-note{font-size:0.75rem;color:var(--text-light);font-family:'Roboto',sans-serif}
-#form-success{display:none;text-align:center;padding:2rem;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.3);border-radius:1rem;margin-top:1rem}
-#form-success h3{font-size:1.1rem;font-weight:700;color:#166534;margin-bottom:0.4rem}
-#form-success p{font-size:0.85rem;color:#166534;font-family:'Roboto',sans-serif}
+.form-group select option{background:#111;color:#fff}
+.form-submit{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.btn-form{display:inline-flex;align-items:center;gap:0.6rem;background:var(--blue-light);color:var(--navy);border:none;border-radius:999px;padding:1rem 2.5rem;font-size:1rem;font-weight:800;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .3s;box-shadow:0 10px 30px rgba(132,182,244,0.3)}
+.btn-form:hover{background:#fff;transform:translateY(-3px);box-shadow:0 15px 40px rgba(255,255,255,0.4)}
+.form-note{font-size:0.75rem;color:rgba(255,255,255,0.4);font-family:'Roboto',sans-serif}
+#form-success{display:none;text-align:center;padding:2rem;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);border-radius:1rem;margin-top:1rem;backdrop-filter:blur(10px)}
+#form-success h3{font-size:1.1rem;font-weight:700;color:#4ade80;margin-bottom:0.4rem}
+#form-success p{font-size:0.85rem;color:rgba(255,255,255,0.8);font-family:'Roboto',sans-serif}
 
 /* ── CTA FINAL ── */
 .cta-final{background:var(--navy);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
@@ -723,11 +725,12 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 
 <!-- ═══════════════ FORMULARIO CONTACTO ═══════════════ -->
 <section class="formulario reveal" id="contacto">
-<div class="container">
-  <div style="text-align:center;margin-bottom:2.5rem">
-    <div class="section-badge">Cotiza gratis</div>
-    <h2 class="section-title">¿Listo para tener tu<br/><span class="blue">página en 48 horas?</span></h2>
-    <p class="section-sub text-center" style="margin:0.9rem auto 0">Llena el formulario y te contactamos por WhatsApp en minutos con tu propuesta.</p>
+<canvas id="particles-form" style="position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%;opacity:0.6;"></canvas>
+<div class="container" style="position:relative;z-index:2">
+  <div style="text-align:center;margin-bottom:3rem">
+    <div class="section-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.9)">Cotiza gratis</div>
+    <h2 class="section-title" style="color:#fff">¿Listo para tener tu<br/><span style="color:var(--blue-light)">página en 48 horas?</span></h2>
+    <p class="section-sub text-center" style="margin:1rem auto 0;color:rgba(255,255,255,0.7)">Llena el formulario y te contactamos por WhatsApp en minutos con tu propuesta.</p>
   </div>
   <div class="form-wrap">
     <h3 class="form-title">Solicitar cotización gratuita</h3>
@@ -837,24 +840,27 @@ footer{background:var(--text-dark);padding:2.5rem 2rem;display:flex;flex-wrap:wr
 </footer>
 
 <script>
-// Particles animation
-const canvas = document.getElementById('particles-canvas');
-if(canvas){
+// Particles animation function
+function initParticles(canvasId, particleCount = 70) {
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let width, height;
   let particles = [];
   let mouse = { x: -9999, y: -9999 };
   
   function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    const rect = canvas.parentElement.getBoundingClientRect();
+    width = canvas.width = rect.width;
+    height = canvas.height = rect.height;
   }
   window.addEventListener('resize', resize);
   resize();
 
-  window.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
+  canvas.parentElement.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
   });
   
   class Particle {
@@ -890,7 +896,7 @@ if(canvas){
     }
   }
 
-  for (let i = 0; i < 70; i++) particles.push(new Particle());
+  for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
@@ -899,6 +905,9 @@ if(canvas){
   }
   animate();
 }
+
+initParticles('particles-canvas', 80);
+initParticles('particles-form', 50);
 
 // Fixed nav — transparent on hero, solid when scrolled
 const nav=document.getElementById('main-nav');
