@@ -684,7 +684,7 @@
 
     @media(min-width:900px) {
       .serv-grid {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(3, 1fr)
       }
     }
 
@@ -765,6 +765,50 @@
       border-radius: 50%;
       background: var(--navy);
       flex-shrink: 0
+    }
+
+    .price-tag {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--blue-light);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .price-tag small {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0;
+    }
+
+    .serv-card.highlight {
+      border: 1px solid rgba(132, 182, 244, 0.4);
+      background: linear-gradient(145deg, rgba(20, 30, 50, 0.8), rgba(0, 81, 135, 0.15));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(132, 182, 244, 0.1);
+    }
+
+    .serv-card.highlight .serv-icon {
+      background: rgba(132, 182, 244, 0.15);
+      box-shadow: 0 0 20px rgba(132, 182, 244, 0.2);
+    }
+
+    .serv-card.highlight::after {
+      content: 'MÁS POPULAR';
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--blue-light);
+      color: var(--navy);
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .serv-cta-row {
@@ -1835,7 +1879,7 @@
   <section class="servicios reveal" id="servicios">
     <div class="container">
       <div style="text-align:center;margin-bottom:0.5rem">
-        <div class="section-badge">Servicios</div>
+        <div class="section-badge">Servicios Digital48</div>
       </div>
       <h2 class="section-title text-center">Todo lo que necesitas<br />para <span class="blue">dominar tu mercado</span>
       </h2>
@@ -1843,22 +1887,56 @@
         primera página web hasta automatización con IA.</p>
       <div class="serv-grid">
 
-        <div class="serv-card">
+        <!-- PAQUETE PRINCIPAL -->
+        <div class="serv-card highlight">
           <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2"
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#84b6f4" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="3" width="20" height="14" rx="2" />
               <line x1="8" y1="21" x2="16" y2="21" />
               <line x1="12" y1="17" x2="12" y2="21" />
             </svg>
           </div>
-          <h3>Página Web en 48 Horas ⚡</h3>
+          <h3>Página WEB profesional</h3>
+          <div class="price-tag">$ 4,000</div>
           <ul>
             <li>Sitio informativo completo</li>
             <li>Diseño personalizado a tu marca</li>
             <li>Adaptado a celular (responsive)</li>
             <li>Enfoque en contacto y conversión</li>
             <li>Integración con WhatsApp</li>
+          </ul>
+        </div>
+
+        <!-- ADICIONALES -->
+        <div class="serv-card">
+          <div class="serv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3>Dominio .com</h3>
+          <div class="price-tag">$ 1,500 <small>(anualidad)</small></div>
+          <p style="font-size:0.8rem; color:var(--text-mid); margin-bottom:0.75rem; font-family:'Roboto', sans-serif;">Hosting por 1 año con tu dominio personalizado.</p>
+          <ul>
+            <li>Sujeta a disponibilidad</li>
+          </ul>
+        </div>
+
+        <div class="serv-card">
+          <div class="serv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <h3>Correo de tu dominio</h3>
+          <div class="price-tag">$ 600 <small>(anualidad por correo)</small></div>
+          <p style="font-size:0.8rem; color:var(--text-mid); margin-bottom:0.75rem; font-family:'Roboto', sans-serif;">Correo con dominio propio para construir tu marca.</p>
+          <ul>
+            <li>Muestra al mundo que vas en serio</li>
           </ul>
         </div>
 
@@ -1870,7 +1948,8 @@
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
-          <h3>SEO — Posicionamiento en Google</h3>
+          <h3>Mejora SEO</h3>
+          <div class="price-tag">$ 2,000</div>
           <ul>
             <li>Optimización para buscadores</li>
             <li>Estructura lista para posicionar</li>
@@ -1886,12 +1965,31 @@
               <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
             </svg>
           </div>
-          <h3>Google Ads — Publicidad Digital</h3>
+          <h3>Google Ads</h3>
+          <div class="price-tag">$ 8,000</div>
+          <p style="font-size:0.75rem; color:var(--text-light); margin-bottom:0.75rem; font-family:'Roboto', sans-serif;">(solo integración más presupuesto mensual)</p>
           <ul>
             <li>Configuración de campañas</li>
             <li>Enfoque en generación de clientes</li>
             <li>Segmentación estratégica</li>
             <li>Optimización continua</li>
+          </ul>
+        </div>
+
+        <div class="serv-card">
+          <div class="serv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Presencia en Google Maps</h3>
+          <div class="price-tag">$ 1,500</div>
+          <ul>
+            <li>Creación de perfil de empresa</li>
+            <li>Aparición en búsquedas locales</li>
+            <li>Atracción de clientes cercanos</li>
+            <li>Ubicación exacta para clientes</li>
           </ul>
         </div>
 
@@ -1903,34 +2001,14 @@
               <path d="M8 12h.01M12 12h.01M16 12h.01" />
             </svg>
           </div>
-          <h3>WhatsApp + CRM + IA 🤖</h3>
-          <p
-            style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;font-family:'Roboto',sans-serif;line-height:1.5">
-            Automatiza tu atención al cliente y nunca pierdas un prospecto.</p>
+          <h3>WhatsApp + IA</h3>
+          <div class="price-tag">$ 6,000 <small>(mensualidad $ 2,000)</small></div>
           <ul>
-            <li>Integración de WhatsApp al sitio web</li>
+            <li>Integración de inteligencia artificial</li>
             <li>Gestión y seguimiento de conversaciones</li>
             <li>Automatización de respuestas</li>
             <li>Clasificación de prospectos</li>
             <li>Bot inteligente adaptado a tu negocio</li>
-          </ul>
-        </div>
-
-        <div class="serv-card">
-          <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <h3>Presencia en Google Maps 📍</h3>
-          <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;font-family:'Roboto',sans-serif;line-height:1.5">
-            Te ayudamos a publicar y destacar tu negocio en mapas.</p>
-          <ul>
-            <li>Creación de perfil de empresa</li>
-            <li>Aparición en búsquedas locales</li>
-            <li>Atracción de clientes cercanos</li>
-            <li>Ubicación exacta para clientes</li>
           </ul>
         </div>
 
