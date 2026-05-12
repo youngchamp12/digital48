@@ -566,6 +566,81 @@
       margin-right: auto
     }
 
+    /* ── DOLOR / RIESGO ── */
+    .authority-quote {
+      text-align: center;
+      padding: 6rem 2rem;
+      font-style: italic;
+      color: var(--text-mid);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 500;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    .pain-section {
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+      padding: 5rem 2rem;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    @media(min-width:640px) {
+      .pain-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media(min-width:900px) {
+      .pain-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .pain-card {
+      background: rgba(239, 68, 68, 0.02);
+      border: 1px solid rgba(239, 68, 68, 0.1);
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .pain-card:hover {
+      background: rgba(239, 68, 68, 0.05);
+      border-color: rgba(239, 68, 68, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(239, 68, 68, 0.1);
+    }
+
+    .pain-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      color: #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(239, 68, 68, 0.1);
+      border-radius: 12px;
+    }
+
+    .pain-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .pain-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      font-family: 'Roboto', sans-serif;
+    }
+
     /* ── QUÉ HACEMOS ── */
     .que-hacemos {
       background: transparent
@@ -1787,7 +1862,7 @@
     <div class="hero-inner-gopro">
       <div class="hg-layout">
         <div class="hg-left">
-          <h1 class="hg-title">Tu página<br>web lista<br><span>en 48 hrs.</span></h1>
+          <h1 class="hg-title">Haz que tu negocio genere<br />clientes <span>desde internet.</span></h1>
           <p class="hg-sub">Páginas informativas, personalizadas y optimizadas para generar clientes reales para tu
             negocio.</p>
           <ul class="hg-bullets">
@@ -1805,6 +1880,73 @@
         <div class="hg-right">
           <div class="hg-glow-text">48</div>
           <img src="../mac.png" alt="MacBook" class="hg-mac" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RIESGO ═══════════════ -->
+  <section class="authority-quote reveal">
+    "La primera impresión hoy ocurre en <span style="color:var(--blue-light)">internet.</span>"
+  </section>
+
+  <section class="pain-section reveal">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:3rem">
+        <div class="section-badge" style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border-color:rgba(239, 68, 68, 0.2)">
+          Impacto Negativo
+        </div>
+        <h2 class="section-title">El Riesgo de la <span style="color:#ef4444">Invisibilidad</span></h2>
+        <p class="section-sub">Lo que pierde un negocio sin presencia digital estratégica.</p>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="17" y1="8" x2="23" y2="14"></line><line x1="23" y1="8" x2="17" y2="14"></line></svg>
+          </div>
+          <h3>Clientes perdidos</h3>
+          <p>Personas que buscan lo que vendes pero nunca encuentran tu negocio.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <h3>Menos profesionalismo</h3>
+          <p>Tus competidores se ven más profesionales por tener una presencia digital sólida.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3>Ventas perdidas</h3>
+          <p>Clientes que se van con otros porque respondes tarde o no tienes automatización.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <h3>Invisibilidad en Google</h3>
+          <p>Tu negocio no aparece cuando los clientes tienen una necesidad inmediata.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          </div>
+          <h3>Dependencia total</h3>
+          <p>Vivir únicamente de recomendaciones sin un sistema predecible de adquisición.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <h3>Desconfianza</h3>
+          <p>La mayoría de los clientes investiga en internet antes de decidirse a comprar.</p>
         </div>
       </div>
     </div>
@@ -1879,141 +2021,141 @@
   <section class="servicios reveal" id="servicios">
     <div class="container">
       <div style="text-align:center;margin-bottom:0.5rem">
-        <div class="section-badge">Servicios Digital48</div>
+        <div class="section-badge">Nuestras Soluciones</div>
       </div>
-      <h2 class="section-title text-center">Todo lo que necesitas<br />para <span class="blue">dominar tu mercado</span>
-      </h2>
-      <p class="section-sub text-center" style="text-align:center;margin:0.9rem auto 0">Soluciones completas desde tu
-        primera página web hasta automatización con IA.</p>
+      <h2 class="section-title text-center">Estrategias de <span class="blue">Crecimiento</span></h2>
+      <p class="section-sub text-center" style="text-align:center;margin:0.9rem auto 0">Soluciones estratégicas para escalar tu negocio digitalmente.</p>
+      
       <div class="serv-grid">
-
-        <!-- PAQUETE PRINCIPAL -->
+        <!-- 1. PÁGINA WEB PROFESIONAL -->
         <div class="serv-card highlight">
           <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#84b6f4" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <line x1="8" y1="21" x2="16" y2="21" />
-              <line x1="12" y1="17" x2="12" y2="21" />
-            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#84b6f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
           </div>
-          <h3>Página WEB profesional</h3>
-          <div class="price-tag">$ 4,000</div>
+          <h3>Página Web Profesional</h3>
+          <div class="price-tag">$ 4,000 MXN</div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:1rem;">Haz que tu negocio se vea profesional y genere más clientes.</p>
           <ul>
-            <li>Sitio informativo completo</li>
-            <li>Diseño personalizado a tu marca</li>
-            <li>Adaptado a celular (responsive)</li>
-            <li>Enfoque en contacto y conversión</li>
-            <li>Integración con WhatsApp</li>
+            <li>Genera confianza</li>
+            <li>Disponible 24/7</li>
+            <li>WhatsApp integrado</li>
+            <li>Optimizada para celulares</li>
+            <li>Imagen profesional</li>
+            <li>Herramienta de ventas digital</li>
           </ul>
+          <a href="#contacto" class="btn-primary" style="margin-top:1.5rem; width:100%; text-align:center;">Quiero mi página</a>
         </div>
 
-        <!-- ADICIONALES -->
+        <!-- 2. SEO -->
         <div class="serv-card">
           <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
           </div>
-          <h3>Dominio .com</h3>
-          <div class="price-tag">$ 1,500 <small>(anualidad)</small></div>
-          <p style="font-size:0.8rem; color:var(--text-mid); margin-bottom:0.75rem; font-family:'Roboto', sans-serif;">Hosting por 1 año con tu dominio personalizado.</p>
+          <h3>Posicionamiento SEO</h3>
+          <div class="price-tag">$ 2,000 MXN</div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:1rem;">Haz que encuentren tu negocio antes que a tu competencia.</p>
           <ul>
-            <li>Sujeta a disponibilidad</li>
+            <li>Más tráfico</li>
+            <li>Más clientes potenciales</li>
+            <li>Más visibilidad en Google</li>
+            <li>Más ventas orgánicas</li>
+            <li>Mejor posicionamiento</li>
           </ul>
+          <a href="#contacto" class="hg-btn-minimal" style="margin-top:auto; display:block; text-align:center;">Quiero aparecer en Google</a>
         </div>
 
+        <!-- 3. GOOGLE ADS -->
         <div class="serv-card">
           <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <h3>Correo de tu dominio</h3>
-          <div class="price-tag">$ 600 <small>(anualidad por correo)</small></div>
-          <p style="font-size:0.8rem; color:var(--text-mid); margin-bottom:0.75rem; font-family:'Roboto', sans-serif;">Correo con dominio propio para construir tu marca.</p>
-          <ul>
-            <li>Muestra al mundo que vas en serio</li>
-          </ul>
-        </div>
-
-        <div class="serv-card">
-          <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </div>
-          <h3>Mejora SEO</h3>
-          <div class="price-tag">$ 2,000</div>
-          <ul>
-            <li>Optimización para buscadores</li>
-            <li>Estructura lista para posicionar</li>
-            <li>Palabras clave estratégicas</li>
-            <li>Mejora de visibilidad online</li>
-          </ul>
-        </div>
-
-        <div class="serv-card">
-          <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
           </div>
           <h3>Google Ads</h3>
-          <div class="price-tag">$ 8,000</div>
-          <p style="font-size:0.75rem; color:var(--text-light); margin-bottom:0.75rem; font-family:'Roboto', sans-serif;">(solo integración más presupuesto mensual)</p>
+          <div class="price-tag">$ 8,000 MXN</div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:0.5rem;">Aparece en Google frente a personas que ya quieren comprar.</p>
+          <p style="font-size:0.7rem; color:var(--text-light); margin-bottom:1rem;">(No incluye presupuesto mensual de publicidad)</p>
           <ul>
-            <li>Configuración de campañas</li>
-            <li>Enfoque en generación de clientes</li>
-            <li>Segmentación estratégica</li>
-            <li>Optimización continua</li>
+            <li>Más clientes</li>
+            <li>Más tráfico</li>
+            <li>Más llamadas</li>
+            <li>Más ventas</li>
+            <li>Más exposición</li>
           </ul>
+          <a href="#contacto" class="hg-btn-minimal" style="margin-top:auto; display:block; text-align:center;">Quiero más clientes</a>
         </div>
 
-        <div class="serv-card">
+        <!-- 4. WHATSAPP + IA -->
+        <div class="serv-card highlight">
           <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <h3>Presencia en Google Maps</h3>
-          <div class="price-tag">$ 1,500</div>
-          <ul>
-            <li>Creación de perfil de empresa</li>
-            <li>Aparición en búsquedas locales</li>
-            <li>Atracción de clientes cercanos</li>
-            <li>Ubicación exacta para clientes</li>
-          </ul>
-        </div>
-
-        <div class="serv-card">
-          <div class="serv-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12A10 10 0 0 1 12 2z" />
-              <path d="M8 12h.01M12 12h.01M16 12h.01" />
-            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#84b6f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7c.9 0 1.8.2 2.6.5l4.3-1.3-1.3 4.3z" /></svg>
           </div>
           <h3>WhatsApp + IA</h3>
-          <div class="price-tag">$ 6,000 <small>(mensualidad $ 2,000)</small></div>
+          <div class="price-tag" style="font-size:1.1rem;">Instalación $ 6,000 MXN</div>
+          <div class="price-tag" style="font-size:1.1rem; color:var(--blue-light);">Mensualidad $ 2,000 MXN</div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:1rem;">Nunca vuelvas a perder clientes por responder tarde.</p>
           <ul>
-            <li>Integración de inteligencia artificial</li>
-            <li>Gestión y seguimiento de conversaciones</li>
-            <li>Automatización de respuestas</li>
-            <li>Clasificación de prospectos</li>
-            <li>Bot inteligente adaptado a tu negocio</li>
+            <li>Atención automática 24/7</li>
+            <li>Respuestas inmediatas</li>
+            <li>Cotizaciones automáticas</li>
+            <li>Filtrado de prospectos</li>
+            <li>Más velocidad = más ventas</li>
           </ul>
+          <p style="font-size:0.75rem; color:var(--text-light); margin-top:1rem; font-style:italic;">“Hoy quien responde primero normalmente se queda con la venta.”</p>
+          <a href="#contacto" class="btn-primary" style="margin-top:1.5rem; width:100%; text-align:center;">Quiero automatizar WhatsApp</a>
         </div>
 
+        <!-- 5. GOOGLE MAPS -->
+        <div class="serv-card">
+          <div class="serv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3>Presencia en Google Maps</h3>
+          <div class="price-tag">$ 1,500 MXN</div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:1rem;">Aparece en el mapa cuando clientes busquen negocios cerca.</p>
+          <ul>
+            <li>Más exposición local</li>
+            <li>Más llamadas</li>
+            <li>Más visitas</li>
+            <li>Más confianza</li>
+            <li>Más clientes locales</li>
+          </ul>
+          <a href="#contacto" class="hg-btn-minimal" style="margin-top:auto; display:block; text-align:center;">Quiero aparecer en Maps</a>
+        </div>
+
+        <!-- 6. DOMINIO .COM -->
+        <div class="serv-card">
+          <div class="serv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3>Dominio Profesional .com</h3>
+          <div class="price-tag">$ 1,500 MXN <small>(anual)</small></div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:1rem;">La identidad digital profesional de tu negocio.</p>
+          <ul>
+            <li>Más profesionalismo</li>
+            <li>Más confianza</li>
+            <li>Imagen empresarial</li>
+            <li>Fácil de compartir</li>
+          </ul>
+          <a href="#contacto" class="hg-btn-minimal" style="margin-top:auto; display:block; text-align:center;">Quiero mi dominio</a>
+        </div>
+
+        <!-- 7. CORREO EMPRESARIAL -->
+        <div class="serv-card">
+          <div class="serv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005187" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <h3>Correo Empresarial</h3>
+          <div class="price-tag">$ 600 MXN <small>(anual)</small></div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:1rem;">Haz que tu negocio se vea realmente profesional.</p>
+          <ul>
+            <li>Correos personalizados</li>
+            <li>Más credibilidad</li>
+            <li>Imagen empresarial</li>
+            <li>Ideal para ventas y cotizaciones</li>
+          </ul>
+          <a href="#contacto" class="hg-btn-minimal" style="margin-top:auto; display:block; text-align:center;">Quiero correo empresarial</a>
+        </div>
       </div>
-      <div class="serv-cta-row"><a class="btn-primary" href="#contacto">Cotizar ahora →</a></div>
+      <div style="text-align:center;margin-top:2.5rem"><a class="btn-primary" href="#contacto">Empezar ahora →</a></div>
     </div>
   </section>
 
